@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-view-all-books',
   standalone: true,
-  imports: [],
+  imports: [HttpClientModule,FormsModule,CommonModule],
   templateUrl: './view-all-books.component.html',
   styleUrl: './view-all-books.component.css'
 })
@@ -21,7 +23,9 @@ export class ViewAllBooksComponent implements OnInit{
   }
 
   loadBooks(){
-    this.http.get('http://localhost:8080/book/get').subscribe{(data)}=>{
+    this.http.get('http://localhost:8080/book/get').subscribe((data)=>{
+      this.bookList = data;
+      console.log(this.bookList);
+    })
     }
-  }
 }
