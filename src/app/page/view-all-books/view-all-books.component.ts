@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './view-all-books.component.css'
 })
 export class ViewAllBooksComponent implements OnInit{
+  public selectedBook : any;
   private http;
   public bookList:any={};
 
@@ -27,5 +28,21 @@ export class ViewAllBooksComponent implements OnInit{
       this.bookList = data;
       console.log(this.bookList);
     })
+    }
+
+    
+
+    deleteBook(){
+      let api = "http://localhost:8080/book/delete/"+this.selectedBook.id;
+      this.http.delete(api,{responseType:'text'}).subscribe((response:String) =>{
+        this.selectedBook=null;
+        this.loadBooks();
+      });
+    }
+
+    setSelectedBook(book : any){
+      this.selectedBook=book;
+      console.log(this.selectedBook);
+      
     }
 }
