@@ -45,6 +45,28 @@
     </div>
   </div>
 <!--  -->
+
+<!-- Model Updated Confirmation -->
+<!-- Button trigger modal -->
+
+<div class="modal fade" id="updateConfirmationModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Update Confirmation</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        If you want to update "{{selectedBook?.title}}" book
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="saveBook()" data-bs-dismiss="modal">Confirm Update</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- Model Update -->
 
 <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -58,27 +80,27 @@
         <form>
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">ID:</label>
-            <input type="text" value={{selectedBook?.id}} class="form-control" id="recipient-name">
+            <input type="text" value={{selectedBook?.id}} disabled class="form-control" id="recipient-name">
           </div>
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">ISBN:</label>
-            <input type="text" value={{selectedBook?.isbn}} class="form-control" id="recipient-name">
+            <input type="text" value={{selectedBook?.isbn}} disabled class="form-control" id="recipient-name">
           </div>
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Title:</label>
-            <input type="text" value={{selectedBook?.title}} class="form-control" id="recipient-name">
+            <input type="text" [(ngModel)]="selectedBook && selectedBook.title" [ngModelOptions]="{standalone:true}" class="form-control" id="recipient-name">
           </div>
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Author:</label>
-            <input type="text" value={{selectedBook?.author}} class="form-control" id="recipient-name">
+            <input type="text" [(ngModel)]="selectedBook && selectedBook.Author" [ngModelOptions]="{standalone:true}" class="form-control" id="recipient-name">
           </div>
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Category:</label>
-            <input type="text" value={{selectedBook?.category}} class="form-control" id="recipient-name">
+            <input type="text" [(ngModel)]="selectedBook && selectedBook.category" [ngModelOptions]="{standalone:true}" class="form-control" id="recipient-name">
           </div>
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">QTY:</label>
-            <input type="text" value={{selectedBook?.qty}} class="form-control" id="recipient-name">
+            <input type="number" [(ngModel)]="selectedBook && selectedBook.qty" [ngModelOptions]="{standalone:true}" class="form-control" id="recipient-name">
           </div>
   
           <!-- <div class="mb-3">
@@ -89,7 +111,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Send message</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#updateConfirmationModal">Update</button>
       </div>
     </div>
   </div>
