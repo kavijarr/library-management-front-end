@@ -18,6 +18,7 @@ export class RegisterComponent implements OnInit{
   public countryList:any;
   public selectedCountry:any;
   public isExistUser:any;
+  public selectedCountryCode:any;
   public userObj={
     firstName:null,
     lastName:null,
@@ -48,6 +49,9 @@ export class RegisterComponent implements OnInit{
 
   setSelectedCountry(country:any){
     this.selectedCountry=country;
+    this.selectedCountryCode=country.idd.root+""+country.idd.suffixes[0];
+    console.log(this.selectedCountryCode);
+    
   }
 
   submitForm(){

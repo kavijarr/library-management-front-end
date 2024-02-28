@@ -29,7 +29,7 @@
             <div class="col-12">
               <label for="username" class="form-label">Username</label>
               <div class="input-group has-validation">
-                <span class="input-group-text">3</span>
+                <span class="input-group-text"></span>
                 <input type="text" class="form-control" id="username" placeholder="Username" [(ngModel)]="userObj.userName" [ngModelOptions]="{standalone:true}" required>
               <div class="invalid-feedback">
                   Your username is required.
@@ -60,9 +60,9 @@
 
             <div class="col-md-5">
               <label for="country" class="form-label">Country</label>
-              <select class="form-select" id="country" required *ngIf="countryList">
-                <option value="">Choose...</option>
-                <option *ngFor="let country of countryList" [value]="country.name.common" (click)="setSelectedCountry(country)">{{country.flag}} {{country.name.common}}</option>
+              <select [(ngModel)]="userObj.country" [ngModelOptions]="{standalone:true}" class="form-select" id="country" required *ngIf="countryList">
+                <option value="" >Choose...</option>
+                <option  *ngFor="let country of countryList" [value]="country.name.common" (click)="setSelectedCountry(country)">{{country.flag}} {{country.name.common}} </option>
               </select>
               <div class="invalid-feedback">
                 Please select a valid country.
@@ -71,7 +71,7 @@
 
             <div class="col-md-3">
               <label for="zip" class="form-label">Phone Number</label>
-              <input type="text" class="form-control" [(ngModel)]="selectedCountry?.idd.root" [ngModelOptions]="{standalone:true}" [(ngModel)]="userObj.phoneNumber" [ngModelOptions]="{standalone:true}" id="zip" placeholder="" required>
+              <input type="text" class="form-control" [(ngModel)]="selectedCountryCode" [ngModelOptions]="{standalone:true}" [(ngModel)]="userObj.phoneNumber" [ngModelOptions]="{standalone:true}" id="zip" placeholder="" required>
               <div class="invalid-feedback">
                 Phone Number is required.
               </div>

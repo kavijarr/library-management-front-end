@@ -3,6 +3,7 @@ import { HttpClient,HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import Swal from 'sweetalert2'
+import { NavComponent } from '../../common/nav/nav.component';
 
 @Component({
   selector: 'app-view-all-books',

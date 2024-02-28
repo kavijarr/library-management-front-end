@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { NavComponent } from './common/nav/nav.component';
 import { ViewAllBooksComponent } from './page/view-all-books/view-all-books.component';
 
+
 @Component({
   selector: 'app-root',
   standalone: true,
